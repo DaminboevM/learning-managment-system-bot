@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int     @id @default(autoincrement())
+  tgId             String  @unique
+  username         String?
+  count            Int     @default(0)
+  isBlocked        Boolean @default(false)
+  isAuthenticated  Boolean @default(false)
+  lastBotMessageId Int?
+}
+
+model Messages {
+  id       Int    @id @default(autoincrement())
+  fullName String
+  phone    String
+  telegram String
+  message  String
+}
