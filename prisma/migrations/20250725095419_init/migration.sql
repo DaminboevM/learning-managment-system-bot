@@ -2,9 +2,11 @@
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "tgId" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
     "username" TEXT,
+    "count" INTEGER NOT NULL DEFAULT 0,
     "isBlocked" BOOLEAN NOT NULL DEFAULT false,
+    "isAuthenticated" BOOLEAN NOT NULL DEFAULT false,
+    "lastBotMessageId" INTEGER,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -22,9 +24,3 @@ CREATE TABLE "Messages" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_tgId_key" ON "User"("tgId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Messages_phone_key" ON "Messages"("phone");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Messages_telegram_key" ON "Messages"("telegram");

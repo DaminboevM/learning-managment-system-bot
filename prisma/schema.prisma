@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -8,13 +9,13 @@ datasource db {
 }
 
 model User {
-  id               Int     @id @default(autoincrement())
-  tgId             String  @unique
-  username         String?
-  count            Int     @default(0)
-  isBlocked        Boolean @default(false)
-  isAuthenticated  Boolean @default(false)
-  lastBotMessageId Int?
+  id                Int     @id @default(autoincrement())
+  tgId              String  @unique
+  username          String?
+  count             Int     @default(0)
+  isBlocked         Boolean @default(false)
+  isAuthenticated   Boolean @default(false)
+  lastBotMessageId  Int?
 }
 
 model Messages {
